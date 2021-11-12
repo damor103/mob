@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title> Alko Form</title>
+
+</head>
+<body>
+<h1> Wilkommen zum Alkomat</h1>
+
+<p>Ihr Blutalkohol beträgt <span th:text="${form.berechneAlkohol}"></span> Pro Mille</p>
+<form method="post" th:object="${form}" action="/">
+    <div class="form-group">
+        <div class="form-check form-check-inline">
+            <label for="m" class ="form-check-label">m</label>
+            <input type="radio" id="m" th:field="*{geschlecht}" value="m" class="form-check-input">
+        </div>
+        <div class="form-check form-check-inline">
+            <label for="w" class = "form-check-label">w</label>
+            <input type="radio" id="w" th:field="*{geschlecht}" value="w" class="form-check-input">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="gewicht">gewicht(kg)</label>
+        <input class="form-control" type="number" id="gewicht" th:field="*{gewicht}">
+        <small th:errors="*{gewicht}" class="text-danger">Fehler</small>
+    </div>
+    <div class="form-group">
+        <label for="bier">Bier(ml)</label>
+        <input class="form-control" type="number" id="bier" th:field="*{bier}">
+    </div>
+    <div class="form-group">
+        <label for="wein">Wein(ml)</label>
+        <input class="form-control" type="number" id="wein" th:field="*{wein}">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+</body>
+</html>
